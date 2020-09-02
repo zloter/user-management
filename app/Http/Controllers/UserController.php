@@ -36,10 +36,10 @@ class UserController extends Controller
     {
         $params = $request->all();
         $user = User::create($params);
-        if ($params['is_lecturer']) {
+        if (!empty($params['is_lecturer'])) {
             $user->lecturer()->create($params);
         }
-        if ($params['is_employee']) {
+        if (!empty($params['is_employee'])) {
             $user->employee()->create($params);
         }
 
@@ -57,20 +57,20 @@ class UserController extends Controller
     public function update(User $user, UserRequest $request)
     {
         $params = $request->all();
-        $user = User::create($params);
-        if ($params['is_lecturer']) {
-            $user->lecturer()->exists() ? $user->lecturer()->update($params) : $user->lecturer()->create($params);
+        $user->save($params);
+        if (!empty($params['is_lecturer'])) {
+            $user->lecturer()->exists() ? $user->lecturer()->first()->update($params) : $user->lecturer()->create($params);
         } else {
             $user->lecturer()->delete();
         }
-        if ($params['is_employee']) {
-            $user->employee()->exists() ? $user->employee()->update($params) : $user->employee()->create($params);
+        if (!empty($params['is_employee'])) {
+            $user->employee()->exists() ? $user->employee()->first()->update($params) : $user->employee()->create($params);
         } else {
             $user->employee()->delete($request);
         }
         return json_encode([
             'status' => 200,
-            'message' => "Successfully created user!"
+            'message' => "Successfully updated user!"
         ]);
     }
 
