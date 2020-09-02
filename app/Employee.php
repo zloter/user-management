@@ -14,7 +14,6 @@ class Employee extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id',
         'address_voivodeship',
         'address_city',
         'address_postal_code',

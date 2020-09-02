@@ -21,7 +21,7 @@ class Lecturer extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'phone', 'education',
+        'phone', 'education',
     ];
 
     /**

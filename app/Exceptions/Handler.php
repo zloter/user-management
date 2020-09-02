@@ -40,7 +40,7 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * Render an exception into an HTTP response.
+     * Render an exception into an JSON response.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Throwable  $exception
@@ -50,6 +50,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+        return $this->prepareJsonResponse($request, $exception);
     }
 }
