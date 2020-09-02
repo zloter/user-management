@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function get(User $user): UserResource
     {
-        return new UserResource($user->with(['employee', 'lecturer'])->first());
+        return new UserResource(User::with(['employee', 'lecturer'])->find($user->id));
     }
 
     /**
@@ -34,12 +34,13 @@ class UserController extends Controller
      */
     public function create(UserRequest $request)
     {
-        $user = User::create($request);
-        if ($request->is_lecturer) {
-            $user->lecturer()->create($request);
+        $params = $request->all();
+        $user = User::create($params);
+        if ($params['is_lecturer']) {
+            $user->lecturer()->create($params);
         }
-        if ($request->is_employee) {
-            $user->employee()->create($request);
+        if ($params['is_employee']) {
+            $user->employee()->create($params);
         }
 
         return json_encode([
@@ -55,14 +56,15 @@ class UserController extends Controller
      */
     public function update(User $user, UserRequest $request)
     {
-        $user = User::create($request);
-        if ($request->is_lecturer) {
-            $user->lecturer()->exists() ? $user->lecturer()->update($request) : $user->lecturer()->create($request);
+        $params = $request->all();
+        $user = User::create($params);
+        if ($params['is_lecturer']) {
+            $user->lecturer()->exists() ? $user->lecturer()->update($params) : $user->lecturer()->create($params);
         } else {
             $user->lecturer()->delete();
         }
-        if ($request->is_employee) {
-            $user->employee()->exists() ? $user->employee()->update($request) : $user->employee()->create($request);
+        if ($params['is_employee']) {
+            $user->employee()->exists() ? $user->employee()->update($params) : $user->employee()->create($params);
         } else {
             $user->employee()->delete($request);
         }

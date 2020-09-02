@@ -36,7 +36,7 @@ class UserRequest extends FormRequest
                 'max:255',
                 (!$user ? Rule::unique('users') : Rule::unique('users')->ignore($user->id))
             ],
-            'password' => 'required|regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/',
+            'password' => 'required|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
         ];
         if ($this->request->get('is_employee')) {
             $rules['address_voivodeship'] = 'required|max:100';
