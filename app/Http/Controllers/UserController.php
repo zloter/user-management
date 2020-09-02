@@ -12,20 +12,20 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 class UserController extends Controller
 {
     /**
-     * @return AnonymousResourceCollection
+     * @return UserCollection
      */
-    public function index(): AnonymousResourceCollection
+    public function index(): UserCollection
     {
-        return UserCollection::collection(User::paginate());
+        return new UserCollection(User::with('employee', 'lecturer')->paginate(25));
     }
 
     /**
-     * @param int $id
+     * @param User $user
      * @return UserResource
      */
-    public function get(int $id): UserResource
+    public function get(User $user): UserResource
     {
-        return new UserResource(User::find($id));
+        return new UserResource($user->with(['employee', 'lecturer'])->first());
     }
 
     /**

@@ -34,7 +34,7 @@ class UserRequest extends FormRequest
                 'required',
                 'email',
                 'max:255',
-                ($user ? Rule::unique('users') : Rule::unique('users')->ignore($user->id))
+                (!$user ? Rule::unique('users') : Rule::unique('users')->ignore($user->id))
             ],
             'password' => 'required|regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/',
         ];

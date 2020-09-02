@@ -8,14 +8,16 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class Lecturer extends JsonResource
 {
     /**
-     * @param Request $request
+     * Transform the resource into a JSON array.
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray(Request $request): array
+    public function toArray($request)
     {
         return [
             'phone' => $this->phone,
-            'education' => $this->education
+            'education' => config("education.$this->education")
         ];
     }
 }

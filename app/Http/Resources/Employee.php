@@ -7,7 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class Employee extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transform the resource into a JSON array.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
