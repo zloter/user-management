@@ -22,5 +22,5 @@ You can add additional type to user by tags.
 By default about 1/3 will  be an employee \n
 And 1/3 will be an lecturer (partially overlapping).
 
-Default emount of records is set to 100 000, but it's taking a lot of time.
+Default amount of records is set to 100 000, but it's taking a lot of time (22 min during last try).
 Also faked data will not be added to audit. 
