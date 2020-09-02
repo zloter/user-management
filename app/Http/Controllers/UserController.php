@@ -57,7 +57,7 @@ class UserController extends Controller
     public function update(User $user, UserRequest $request)
     {
         $params = $request->all();
-        $user->save($params);
+        $user->update($params);
         if (!empty($params['is_lecturer'])) {
             $user->lecturer()->exists() ? $user->lecturer()->first()->update($params) : $user->lecturer()->create($params);
         } else {
