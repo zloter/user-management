@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lecturer extends Model
 {
+    use \OwenIt\Auditing\Auditable;
 
     const COLLEGE_GRADUATE = 1;
     const ASSOCIATE_DEGREE = 2;

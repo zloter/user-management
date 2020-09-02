@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.

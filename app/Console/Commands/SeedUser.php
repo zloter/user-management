@@ -84,7 +84,9 @@ class SeedUser extends Command
     private function addFakeUsers(float $employeesRate, float $lecturersRate, int $amount)
     {
         set_time_limit(60*60);
+        ini_set('memory_limit','1024M');
         $start = time();
+
         $users = factory(User::class, $amount)
             ->create()
             ->each(function (User $user) use ($employeesRate, $lecturersRate) {
@@ -97,6 +99,8 @@ class SeedUser extends Command
                     $user->employee()->save(factory(Employee::class)->make());
                 }
             });
+
+
         $diff = time() - $start;
         $fullDays    = floor($diff/(60*60*24));
         $fullHours   = floor(($diff-($fullDays*60*60*24))/(60*60));
