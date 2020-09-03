@@ -1,6 +1,6 @@
 # Installation guide
 To install I recommend to use this docker-compose:
-https://gitea.pagepartner.provps.pl/zygmunt.loter/laravel_simple_docker
+https://github.com/zloter/laravel_simple_docker
 
 ```
 docker-compose exec php bash
