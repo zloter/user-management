@@ -1,4 +1,4 @@
-#Installation guide
+# Installation guide
 To install I recommend to use this docker-compose:
 https://gitea.pagepartner.provps.pl/zygmunt.loter/laravel_simple_docker
 
@@ -19,8 +19,8 @@ There is also additional configuration:
         {--amount=100000 : amount of faked account. Up to 100 000}";
 
 You can add additional type to user by tags.
-By default about 1/3 will  be an employee \n
+By default about 1/3 will  be an employee 
 And 1/3 will be an lecturer (partially overlapping).
 
 Default amount of records is set to 100 000, but it's taking a lot of time (22 min during last try).
-Also faked data will not be added to audit. 
+Faked data will not be added to audit. 
